@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <form method="POST" action="{% url 'fileupload' %}" enctype="multipart/form-data">
+        <!-- 서버에서 폼을 출력할 때 csrf_token을 설정하는데
+        이유는 URL을 복사해서 데이터를 전송하는 것을 막기 위해서-->
+        {% csrf_token %}
+        {% bootstrap_form fileuploadForm %}
+        <input type="submit" class="btn btn-primary col-12" value="제출">
+    </form>
+</div>
+{% endblock%}
